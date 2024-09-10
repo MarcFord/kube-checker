@@ -1,0 +1,23 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USER }}" --password-stdin
+
+    - name: Build Docker image
+      run: docker build -t your-dockerhub-username/kube-checker:${{ github.ref_name }} .
+
+    - name: Push Docker image
+      run: docker push your-dockerhub-username/kube-checker:${{ github.ref_name }}

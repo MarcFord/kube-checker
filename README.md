@@ -7,3 +7,6 @@ before they are applyed, to ensure best practices are followed.
 - [kube-score](https://github.com/zegl/kube-score)
 - [kubeconform](https://github.com/yannh/kubeconform)
 - [Polaris](https://github.com/FairwindsOps/polaris)
+- Google Cloud SDK
+- AWS CLI
+- Azure CLI

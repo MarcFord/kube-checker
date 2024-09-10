@@ -25,7 +25,7 @@ RUN go install github.com/zegl/kube-score/cmd/kube-score@latest
 RUN go install github.com/FairwindsOps/polaris@latest
 
 FROM alpine:latest
-RUN apk update && apk upgrade && apk add ca-certificates && update-ca-certificates
+RUN apk update && apk upgrade && apk add ca-certificates kubectl && update-ca-certificates
 COPY --from=build /root/go/bin/kubeconform /usr/local/bin/kubeconform
 COPY --from=build /root/go/bin/kube-score /usr/local/bin/kube-score
 COPY --from=build /root/go/bin/polaris /usr/local/bin/polaris
